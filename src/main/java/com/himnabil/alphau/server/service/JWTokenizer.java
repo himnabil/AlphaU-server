@@ -24,7 +24,6 @@ public class JWTokenizer {
         return JWT.create()
                 .withClaim("id", user.getId())
                 .withClaim("user_name", user.getUserName())
-                .withClaim("password_hash", user.getHashedPassword())
                 .withClaim("app_name", user.getAppName())
                 .withClaim("app_id", user.getAppId())
                 .sign(Algorithm.RSA256((RSAKey) privateKey));
