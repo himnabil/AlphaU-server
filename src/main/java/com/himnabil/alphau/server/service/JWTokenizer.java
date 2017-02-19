@@ -9,7 +9,7 @@ import java.security.PrivateKey;
 import java.security.interfaces.RSAKey;
 
 /**
- * Created by himna on 2/12/2017.
+ * @author himnabil
  */
 @Service
 public class JWTokenizer {
