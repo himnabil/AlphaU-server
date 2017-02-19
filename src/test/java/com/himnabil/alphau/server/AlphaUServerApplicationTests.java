@@ -1,4 +1,4 @@
-package com.himnabil;
+package com.himnabil.alphau.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AlphauServerApplicationTests {
+public class AlphaUServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
