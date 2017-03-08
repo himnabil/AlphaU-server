@@ -8,7 +8,6 @@ public class User  {
     private String userName;
     private String hashedPassword;
     private String appName ;
-    private Integer appId ;
 
     public String getId() {
         return id;
@@ -42,11 +41,4 @@ public class User  {
         this.appName = appName;
     }
 
-    public Integer getAppId() {
-        return appId;
-    }
-
-    public void setAppId(Integer appId) {
-        this.appId = appId;
-    }
 }

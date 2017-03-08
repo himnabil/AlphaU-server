@@ -6,10 +6,7 @@ import com.himnabil.alphau.server.service.PasswordUtils;
 import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -27,7 +24,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.POST)
-    public ResponseEntity<User> subscription (@RequestBody User user){
+    public ResponseEntity<User> subscription (@RequestBody User user , @RequestAttribute("ata") String toto ){
         user = repository.save(user);
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
@@ -40,7 +37,6 @@ public class UserController {
         user.setUserName("himnabil");
         user.setHashedPassword(passwordUtils.hash("viveMoi31."));
         user.setAppName("ubsunu");
-        user.setAppId( "ubsunu".hashCode());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

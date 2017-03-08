@@ -14,14 +14,14 @@ import java.security.PublicKey;
 public class PublicKeyController {
 
     public PublicKeyController( KeysManager manager ){
-        publicKey = manager.getPublicKey() ;
+        this.manager= manager ;
     }
 
-    private PublicKey publicKey;
+    private KeysManager manager;
 
     @RequestMapping("/key")
     public String key (){
-        return Base64.encodeBase64String(publicKey.getEncoded());
+        return Base64.encodeBase64String(manager.getPublicKey().getEncoded());
     }
 
 }

@@ -5,6 +5,7 @@ import com.himnabil.alphau.server.repository.UserRepository;
 import com.himnabil.alphau.server.service.JWTokenizer;
 import com.himnabil.alphau.server.service.KeysManager;
 import com.himnabil.alphau.server.service.PasswordUtils;
+import com.himnabil.alphau.server.service.Tokenizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 public class TokenManagementConfiguration {
 
     @Bean
-    public JWTokenizer tokenizer (KeysManager keysManager){
+    public Tokenizer tokenizer (KeysManager keysManager){
         return new JWTokenizer(keysManager);
     }
 

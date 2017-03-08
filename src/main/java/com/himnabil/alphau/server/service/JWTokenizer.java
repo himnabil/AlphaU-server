@@ -12,12 +12,12 @@ import java.security.interfaces.RSAKey;
  * @author himnabil
  */
 @Service
-public class JWTokenizer {
+public class JWTokenizer implements Tokenizer{
 
-    private PrivateKey privateKey ;
+    private KeysManager keysManager ;
 
     public JWTokenizer (KeysManager keysManager){
-        this.privateKey = keysManager.getPrivateKey();
+        this.keysManager = keysManager;
     }
 
     public String tokenizeUser (User user){
@@ -25,7 +25,6 @@ public class JWTokenizer {
                 .withClaim("id", user.getId())
                 .withClaim("user_name", user.getUserName())
                 .withClaim("app_name", user.getAppName())
-                .withClaim("app_id", user.getAppId())
-                .sign(Algorithm.RSA256((RSAKey) privateKey));
+                .sign(Algorithm.RSA256((RSAKey) keysManager.getPrivateKey()));
     }
 }

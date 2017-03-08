@@ -26,7 +26,6 @@ public class UserRepository {
                 .append("user_name", user.getUserName())
                 .append("password_hash", user.getHashedPassword())
                 .append("app_name", user.getAppName())
-                .append("app_id", user.getAppId())
                 ;
         collection.insertOne(userDocument);
         user.setId( userDocument.getObjectId("_id").toHexString());
@@ -44,7 +43,6 @@ public class UserRepository {
         user.setUserName(userDocument.getString("user_name"));
         user.setHashedPassword(userDocument.getString("password_hash"));
         user.setAppName(userDocument.getString("app_name"));
-        user.setAppId(userDocument.getInteger("app_id"));
 
         return user;
     }
