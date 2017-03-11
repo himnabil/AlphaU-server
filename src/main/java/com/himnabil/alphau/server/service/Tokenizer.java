@@ -2,10 +2,15 @@ package com.himnabil.alphau.server.service;
 
 import com.himnabil.alphau.server.model.User;
 
-/**
- * Created by himna on 3/4/2017.
- */
-public interface Tokenizer {
+import java.util.Collection;
 
-    public String tokenizeUser (User user);
+/**
+ * @author himna
+ * @since 3/4/2017.
+ */
+public interface Tokenizer <E , Builder> {
+
+    public String tokenize (E entity);
+
+    public void setClaimInjectors (Collection< ClaimsInjector<E , Builder> > claimInjectors);
 }

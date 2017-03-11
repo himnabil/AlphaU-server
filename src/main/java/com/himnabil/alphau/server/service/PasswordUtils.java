@@ -7,7 +7,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by himna on 2/12/2017.
+ * @author himna
+ * @since 2/12/2017.
  */
 @Service
 public class PasswordUtils {

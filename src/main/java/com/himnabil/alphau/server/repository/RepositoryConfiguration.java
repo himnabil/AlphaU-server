@@ -7,7 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by himna on 2/12/2017.
+ * @author himna
+ * @since 2/12/2017.
  */
 @Configuration
 public class RepositoryConfiguration {

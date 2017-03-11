@@ -1,10 +1,12 @@
 package com.himnabil.alphau.server.controller;
 
+import com.auth0.jwt.JWTCreator;
 import com.himnabil.alphau.server.model.TokenRequestBody;
 import com.himnabil.alphau.server.model.User;
 import com.himnabil.alphau.server.repository.UserRepository;
-import com.himnabil.alphau.server.service.JWTokenizer;
+import com.himnabil.alphau.server.service.JWTUserTokenizer;
 import com.himnabil.alphau.server.service.PasswordUtils;
+import com.himnabil.alphau.server.service.Tokenizer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +19,10 @@ import java.security.NoSuchAlgorithmException;
 public class TokenController {
 
     private UserRepository userRepository ;
-    private JWTokenizer tokenizer ;
+    private Tokenizer<User , ?> tokenizer ;
     private PasswordUtils passwordUtils;
 
-    public TokenController (UserRepository userRepository , JWTokenizer tokenizer , PasswordUtils passwordUtils){
+    public TokenController (UserRepository userRepository , Tokenizer<User , ?> tokenizer , PasswordUtils passwordUtils){
         this.userRepository = userRepository ;
         this.tokenizer = tokenizer ;
         this.passwordUtils = passwordUtils ;
@@ -36,7 +38,7 @@ public class TokenController {
         if (! passwordUtils.checkPassword(user.getHashedPassword() , request.getPassword())){
             return  new ResponseEntity<>("Invalid password" , HttpStatus.BAD_REQUEST);
         }
-        String token = tokenizer.tokenizeUser(user);
+        String token = tokenizer.tokenize(user);
         return new ResponseEntity<>( token , HttpStatus.OK);
     }
 }

@@ -1,18 +1,11 @@
 package com.himnabil.alphau.server.service;
 
 /**
- * himna on 3/4/2017.
- *
- */
-
-/**
+ * @author himna
  *
  */
 
 
-public class ClaimsInjector <T>{
-
-    private String claimName ;
-
-
+public interface ClaimsInjector <E , TokenBuilder> {
+    public TokenBuilder inject ( TokenBuilder builder , E entity);
 }
