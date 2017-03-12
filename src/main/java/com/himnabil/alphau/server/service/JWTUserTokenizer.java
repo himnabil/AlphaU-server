@@ -6,7 +6,6 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.himnabil.alphau.server.model.User;
 import org.springframework.stereotype.Service;
 
-import java.security.PrivateKey;
 import java.security.interfaces.RSAKey;
 import java.util.Collection;
 

@@ -5,8 +5,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.PublicKey;
-
 /**
  * Created by himna on 2/11/2017.
  */

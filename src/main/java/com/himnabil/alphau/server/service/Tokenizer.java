@@ -1,7 +1,5 @@
 package com.himnabil.alphau.server.service;
 
-import com.himnabil.alphau.server.model.User;
-
 import java.util.Collection;
 
 /**

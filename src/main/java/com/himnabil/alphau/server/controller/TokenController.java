@@ -1,10 +1,8 @@
 package com.himnabil.alphau.server.controller;
 
-import com.auth0.jwt.JWTCreator;
 import com.himnabil.alphau.server.model.TokenRequestBody;
 import com.himnabil.alphau.server.model.User;
 import com.himnabil.alphau.server.repository.UserRepository;
-import com.himnabil.alphau.server.service.JWTUserTokenizer;
 import com.himnabil.alphau.server.service.PasswordUtils;
 import com.himnabil.alphau.server.service.Tokenizer;
 import org.springframework.http.HttpStatus;

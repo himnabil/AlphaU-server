@@ -1,5 +1,6 @@
 language: java
+services: mongodb
 sudo: false
-script: mvn clean install
+script: mvn clean install docker:build
 jdk:
   - oraclejdk8
