@@ -4,7 +4,7 @@ sudo: required
 addons:
   sonarqube:
     token:
-      secure: "bNVR5/H81Std9cbmKWAUhaxW0HfklKmzm+9TwcutxQBQTbrzbopOooYKwL6YHShR9HYC4SL36/R632DB2cvZ+X6AQg1fdEOovIWMk+fVaD7zuUU8Ho5C2OGWyvavIuRnSBCq22+8Um/GX3H0IVDSfmNGaWvuadBTKUL1Mto/7GzE0jY9/WxQl9l98GlOspY9wL8MLafF7NF898SmlRrS6BIiCKbTREt2DXGWL1hryq5A5dJ1UkzDWYvo8sdYCG8EYVCKlDW+iyqFy+g8K14RiT58wHbeuNsuRA6lKAtYJcnmqdDSMbxcFzZS2KeQx2tOztdbGEEK+9Rqtl7zHyc/PCKxO9gQuJjsHBhqKOIAwZMQSNiv2OmBIU4mMtrlQUCAQPbKGBYy1hR//wA/hQK+KmQAkTnB/PBcXblRrfkc4Uh13CYnrpEt7zjhgmcalgcziK8xG5q/gq/tvwF0d4bHX9XDp1W8cMxNkMavP9MiR6y+Gh0PB+bEvUU5saXxTwyWt/BUlb+02lbtP+1tNyYg73HFR6eHwEyHdgKjqWLss3Tm9lVzsJsy0uvhOg2LictjXw7ZKhsrFrewNB2XdTHdxjfz0mLGcDcNsYnDrEpx5TYuZDdWBuEYXBnES8c23PdyCVMBdYjgXifqwx+dpArtS0ep/KovTVx+CLrqN3Aress="
+      secure: "f37a6311912aa4f71cf25eacc6e6b451100b9d39"
 services:
 - mongodb
 - docker
