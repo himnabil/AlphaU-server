@@ -1,15 +1,10 @@
 language: java
 dist: trusty
 sudo: required
-addons:
-  sonarqube:
-    token:
-      secure: "f37a6311912aa4f71cf25eacc6e6b451100b9d39"
 services:
 - mongodb
 - docker
 script:
-- sonar-scanner -X
 - mvn clean install docker:build
 
 jdk:
