@@ -6,12 +6,11 @@ addons:
   sonarqube:
     organization: "alphau"
 
-
 services:
 - mongodb
 - docker
 script:
-- sonar-scanner -X
 - mvn clean install docker:build
+- sonar-scanner
 jdk:
 - oraclejdk8
