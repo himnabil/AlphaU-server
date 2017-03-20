@@ -10,7 +10,7 @@ services:
 - mongodb
 - docker
 script:
-- sonar-scanner
+- sonar-scanner -X
 - mvn clean install docker:build
 
 jdk:
