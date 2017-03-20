@@ -1,10 +1,16 @@
 language: java
 dist: trusty
 sudo: required
+addons:
+  sonarqube:
+    token:
+      organization: "alphau"
+      secure: "MD6Q0XGYy521qi03/R1fZba5+8UiDelJYPYVPmE7jvxYcq22l2KmECsHOuFJLyZxOS36cUlSU5tW5A9hqXGS3EGSTax63fEAqIeBFMxcQQ4uVVmXajk4/IgzcXcZ1GyiBRDUcjBwsbf5tcEAYnu5kN8w2Wlny04SakFYFCf+lctpBvBobau6zEsWkcH4a90xxZ9lrw2Jgpyim3DKuNROsL7qC6bEQb2P+8bTAmUGnjk+sh2X7c3pCbeGSW4KKdC1Tb/rcVO5Do6HFVehNTO+l+LvN6of3AIAH3aFOyUUjWrlqe01ds8eu/7wsWqYaFdzp7WoANVsCLwU8SyUASI17x3RS/YRVOTEear8XnrSJq3fhK3eEwzJVYcr7eNfmQl3ioiwCuSqKY7I3+cXHs7m+k5dEAoJLffcK1h9LrKyQh2Qv98PZAd+UDxSRzuSMrqZvtHfqPe2DpeK+/dFRXsP/tlMLuF5i0E5lmWYEF5uw40fDu9chgLLuM/Tt8wME0sExZ3WlS/GLEPhFux5LjGeLNLTQfvuu6GkaDR3sS4NnVqBoaXom8qYgwENxVjGcomAeTDWppAkWsjBrgvUWrKbUntYyivY3qgcrliioT51juLmdZ7eqFzRTqltT2Cxbp2rhXFeEyiOc5YPv9ae8DmJgXzGVf5WpSptQ7NwUF80XmM="
 services:
 - mongodb
 - docker
 script:
+- sonar-scanner
 - mvn clean install docker:build
 
 jdk:
