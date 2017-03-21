@@ -32,7 +32,7 @@ public class TokenManagementConfiguration {
     }
 
     @Bean
-    public Tokenizer<User , ?> userTokenizer (KeysManager keysManager , Collection<ClaimsInjector<User, JWTCreator.Builder>> injectorsList){
+    public Tokenizer<User , JWTCreator.Builder> userTokenizer (KeysManager keysManager , Collection<ClaimsInjector<User, JWTCreator.Builder>> injectorsList){
         Tokenizer<User , JWTCreator.Builder> userTokenizer = new JWTUserTokenizer(keysManager);
         userTokenizer.setClaimInjectors(injectorsList);
         return userTokenizer;

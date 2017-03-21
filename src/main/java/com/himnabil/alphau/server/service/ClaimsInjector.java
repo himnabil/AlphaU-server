@@ -5,7 +5,7 @@ package com.himnabil.alphau.server.service;
  *
  */
 
-
-public interface ClaimsInjector <E , TokenBuilder> {
-    public TokenBuilder inject ( TokenBuilder builder , E entity);
+@FunctionalInterface
+public interface ClaimsInjector <E , B> {
+    public B inject (B builder , E entity);
 }

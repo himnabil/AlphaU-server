@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PublicKeyController {
 
+    private KeysManager manager;
+
     public PublicKeyController( KeysManager manager ){
         this.manager= manager ;
     }
-
-    private KeysManager manager;
 
     @RequestMapping("/key")
     public String key (){

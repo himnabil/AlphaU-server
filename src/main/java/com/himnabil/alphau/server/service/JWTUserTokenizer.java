@@ -32,7 +32,7 @@ public class JWTUserTokenizer implements Tokenizer<User, JWTCreator.Builder>{
                 .withClaim("app_name", user.getAppName()) ;
 
         claimInjectors.forEach(
-                (claimsInjector) -> builder = claimsInjector.inject(builder , user)
+                claimsInjector -> builder = claimsInjector.inject(builder , user)
         );
 
         return builder.sign(Algorithm.RSA256((RSAKey) keysManager.getPrivateKey()));

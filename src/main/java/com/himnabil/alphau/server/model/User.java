@@ -1,8 +1,5 @@
 package com.himnabil.alphau.server.model;
 
-import org.bson.types.ObjectId;
-
-
 public class User  {
     private String id;
     private String userName;
