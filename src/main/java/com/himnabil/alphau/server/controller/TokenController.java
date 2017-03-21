@@ -28,7 +28,7 @@ public class TokenController {
 
     @RequestMapping(path = "/token" , method = RequestMethod.POST)
     public ResponseEntity<String> token( @RequestBody TokenRequestBody request )
-            throws UnsupportedEncodingException, NoSuchAlgorithmException {
+            throws Exception {
         User user = userRepository.find( request.getAppName() , request.getUserName());
             if (user == null) {
             return  new ResponseEntity<>("User not found" , HttpStatus.NOT_FOUND);
