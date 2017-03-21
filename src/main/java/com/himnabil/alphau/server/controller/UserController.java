@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public ResponseEntity<User> getUser () throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public ResponseEntity<User> getUser () throws Exception {
         PasswordUtils passwordUtils = new PasswordUtils();
         User user = new User();
         user.setId(new ObjectId().toHexString());
