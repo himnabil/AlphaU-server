@@ -15,7 +15,7 @@ import static com.mongodb.client.model.Filters.*;
     private static final String COLLECTION_NAME = "user";
     private static final String USER_NAME = "user_name";
     private static final String APP_NAME = "app_name";
-    private static final String PWD_HASH = "password_hash";
+    private static final String PASS_HASH = "password_hash";
     private static final String ID = "_id";
 
     private  MongoCollection<Document> collection;
@@ -27,7 +27,7 @@ import static com.mongodb.client.model.Filters.*;
     public User save (User user){
         Document userDocument = new Document()
                 .append(USER_NAME, user.getUserName())
-                .append(PWD_HASH, user.getHashedPassword())
+                .append(PASS_HASH, user.getHashedPassword())
                 .append(APP_NAME, user.getAppName())
                 ;
         collection.insertOne(userDocument);
@@ -44,7 +44,7 @@ import static com.mongodb.client.model.Filters.*;
 
         user.setId(userDocument.getObjectId(ID).toHexString());
         user.setUserName(userDocument.getString(USER_NAME));
-        user.setHashedPassword(userDocument.getString(PWD_HASH));
+        user.setHashedPassword(userDocument.getString(PASS_HASH));
         user.setAppName(userDocument.getString(APP_NAME));
 
         return user;

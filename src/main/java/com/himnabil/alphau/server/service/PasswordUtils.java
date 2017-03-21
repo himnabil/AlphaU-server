@@ -13,13 +13,22 @@ import java.security.NoSuchAlgorithmException;
 @Service
 public class PasswordUtils {
 
-    public String hash (String password) throws Exception {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        md.update( password.getBytes("UTF-8") );
-        return new String(md.digest());
+    public String hash (String password)  {
+        try {
+
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update( password.getBytes("UTF-8") );
+            return new String(md.digest());
+
+        }catch (NoSuchAlgorithmException | UnsupportedEncodingException e){
+
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
-    public boolean checkPassword(String hashedPassword , String entreePassword ) throws Exception {
+    public boolean checkPassword(String hashedPassword , String entreePassword ) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         return hashedPassword.equals( hash(entreePassword) );
     }
 
