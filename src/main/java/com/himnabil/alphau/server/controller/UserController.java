@@ -25,8 +25,8 @@ public class UserController {
 
     @RequestMapping(path = "/user", method = RequestMethod.POST)
     public ResponseEntity<User> subscription (@RequestBody User user , @RequestAttribute("ata") String toto ){
-        user = repository.save(user);
-        return new ResponseEntity<User>(user, HttpStatus.CREATED);
+        User savedUser = repository.save(user);
+        return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
