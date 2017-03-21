@@ -28,7 +28,7 @@ public class PasswordUtils {
 
     }
 
-    public boolean checkPassword(String hashedPassword , String entreePassword ) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public boolean checkPassword(String hashedPassword , String entreePassword ) {
         return hashedPassword.equals( hash(entreePassword) );
     }
 

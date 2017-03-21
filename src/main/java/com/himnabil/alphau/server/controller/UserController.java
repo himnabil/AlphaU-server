@@ -8,9 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Created by himna on 2/12/2017.
  */
@@ -30,7 +27,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public ResponseEntity<User> getUser () throws Exception {
+    public ResponseEntity<User> getUser () {
         PasswordUtils passwordUtils = new PasswordUtils();
         User user = new User();
         user.setId(new ObjectId().toHexString());
