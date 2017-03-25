@@ -9,7 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by himna on 2/12/2017.
+ * @author himna
+ * @since 2/12/2017.
  */
 @RestController
 public class UserController {
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.POST)
-    public ResponseEntity<User> subscription (@RequestBody User user , @RequestAttribute("ata") String toto ){
+    public ResponseEntity<User> subscription (@RequestBody User user , @RequestAttribute(name = "ata" , required = false) String toto ){
         User savedUser = repository.save(user);
         return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
     }
