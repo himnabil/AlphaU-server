@@ -21,8 +21,8 @@ services:
 
 script:
 - mvn clean install docker:build -Ddocker.image.prefix=$dockerImagePrefix -Ddocker.image.name=$dockerImageName -Ddocker.image.tag=$dockerImageTag
-- sonar-scanner
 
 after_success:
+- sonar-scanner
 - docker login -u$DOCKER_HUB_USERNAME -p$DOCKER_HUB_PASSWORD
 - docker push $dockerImagePrefix/$dockerImageName:$dockerImageTag
