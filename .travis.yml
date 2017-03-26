@@ -1,4 +1,7 @@
 language: java
+jdk:
+- oraclejdk8
+
 dist: trusty
 sudo: required
 
@@ -6,11 +9,20 @@ addons:
   sonarqube:
     organization: "alphau"
 
+env:
+  global:
+  - dockerImagePrefix: himnabil
+  - dockerImageName: alphau-server
+  - dockerImageTag: RC1
+
 services:
 - mongodb
 - docker
+
 script:
-- mvn clean install docker:build
+- mvn clean install docker:build -Ddocker.image.prefix=$dockerImagePrefix -Ddocker.image.name=$dockerImageName -Ddocker.image.tag=$dockerImageTag
 - sonar-scanner
-jdk:
-- oraclejdk8
+
+after_success:
+- docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD
+- docker push $dockerImagePrefix/dockerImageName:dockerImageTag
