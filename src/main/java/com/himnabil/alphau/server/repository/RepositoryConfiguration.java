@@ -2,7 +2,9 @@ package com.himnabil.alphau.server.repository;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoSocketOpenException;
 import com.mongodb.client.MongoDatabase;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,10 +21,14 @@ public class RepositoryConfiguration {
     @Value("${alphau.db.mongo.databaseName}")
     String databaseName;
 
-    @Bean
-    public MongoDatabase database (){
+
+    @Bean MongoClient client (){
         MongoClientURI connectionString = new MongoClientURI(mongodbUri);
-        MongoClient mongoClient = new MongoClient(connectionString);
+        return new MongoClient(connectionString);
+    }
+
+    @Bean
+    public MongoDatabase database (@Qualifier("client") MongoClient mongoClient ) {
         return mongoClient.getDatabase(databaseName);
     }
 
