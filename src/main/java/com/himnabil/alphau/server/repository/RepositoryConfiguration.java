@@ -2,7 +2,6 @@ package com.himnabil.alphau.server.repository;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.MongoSocketOpenException;
 import com.mongodb.client.MongoDatabase;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
