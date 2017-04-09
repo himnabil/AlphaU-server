@@ -1,5 +1,6 @@
 package com.himnabil.alphau.server.controller;
 
+import com.himnabil.alphau.server.ApiErrors;
 import com.himnabil.alphau.server.model.TokenRequestBody;
 import com.himnabil.alphau.server.model.User;
 import com.himnabil.alphau.server.repository.UserRepository;
@@ -23,15 +24,14 @@ public class TokenController {
         this.passwordUtils = passwordUtils ;
     }
 
-    @CrossOrigin()
     @RequestMapping(path = "/token" , method = RequestMethod.POST)
-    public ResponseEntity<String> token( @RequestBody TokenRequestBody request ) {
+    public ResponseEntity<?> token( @RequestBody TokenRequestBody request ) {
         User user = userRepository.find( request.getAppName() , request.getUserName());
             if (user == null) {
-            return  new ResponseEntity<>("User not found" , HttpStatus.NOT_FOUND);
+            return  new ResponseEntity<>(ApiErrors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
         if (! passwordUtils.checkPassword(user.getHashedPassword() , request.getPassword())){
-            return  new ResponseEntity<>("Invalid password" , HttpStatus.BAD_REQUEST);
+            return  new ResponseEntity<>(ApiErrors.INVALIDE_PASSWORD , HttpStatus.BAD_REQUEST);
         }
         String token = tokenizer.tokenize(user);
         return new ResponseEntity<>( token , HttpStatus.OK);
