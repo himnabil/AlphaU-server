@@ -1,10 +1,14 @@
 package com.himnabil.alphau.server.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User  {
     private String id;
     private String userName;
     private String hashedPassword;
     private String appName ;
+    private Map<String, Object> properties = new HashMap<String, Object>();
 
     public String getId() {
         return id;
@@ -38,4 +42,11 @@ public class User  {
         this.appName = appName;
     }
 
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
+    }
 }

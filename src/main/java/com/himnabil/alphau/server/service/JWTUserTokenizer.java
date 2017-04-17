@@ -29,11 +29,13 @@ public class JWTUserTokenizer implements Tokenizer<User, JWTCreator.Builder>{
         builder = JWT.create()
                 .withClaim("id", user.getId())
                 .withClaim("user_name", user.getUserName())
-                .withClaim("app_name", user.getAppName()) ;
+                .withClaim("app_name", user.getAppName());
 
-        claimInjectors.forEach(
-                claimsInjector -> builder = claimsInjector.inject(builder , user)
-        );
+        user.getProperties()
+                .entrySet()
+                .forEach (entry -> builder.withClaim(entry.getKey(), entry.getValue().toString()));
+
+        claimInjectors.forEach( claimsInjector -> builder = claimsInjector.inject(builder , user) );
 
         return builder.sign(Algorithm.RSA256((RSAKey) keysManager.getPrivateKey()));
     }

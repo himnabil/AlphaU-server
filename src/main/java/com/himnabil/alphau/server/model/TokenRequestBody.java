@@ -16,7 +16,7 @@ public class TokenRequestBody {
     private String appName ;
     private String userName ;
     private String password ;
-    private Map<String, Object> properties = new HashMap<String,Object>();
+    private Map<String, String> properties = new HashMap<String,String>();
 
     @JsonGetter("app_name")
     public String getAppName() {
@@ -46,11 +46,11 @@ public class TokenRequestBody {
     }
 
     @JsonAnyGetter
-    public Map<String,Object> getProperties (){
+    public Map<String,String> getProperties (){
         return properties;
     }
     @JsonAnySetter
-    public void setPropertie (String key , Object value){
+    public void setPropertie (String key , String value){
         properties.put(key , value);
     }
 }

@@ -26,7 +26,7 @@ public class TokenController {
 
     @RequestMapping(path = "/token" , method = RequestMethod.POST)
     public ResponseEntity<?> token( @RequestBody TokenRequestBody request ) {
-        User user = userRepository.find( request.getAppName() , request.getUserName());
+        User user = userRepository.find( request.getAppName() , request.getUserName(), request.getProperties());
             if (user == null) {
             return  new ResponseEntity<>(ApiErrors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
         }

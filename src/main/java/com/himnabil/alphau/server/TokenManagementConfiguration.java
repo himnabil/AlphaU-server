@@ -27,7 +27,9 @@ public class TokenManagementConfiguration {
     @Bean
     public Collection<ClaimsInjector<User, JWTCreator.Builder>> claimsInjectors () {
         Collection<ClaimsInjector<User, JWTCreator.Builder>> injectorsList = new ArrayList<>();
+
         injectorsList.add ( new PublicKeyUriClaimInjector(publicKeyUri) );
+
         return injectorsList;
     }
 
