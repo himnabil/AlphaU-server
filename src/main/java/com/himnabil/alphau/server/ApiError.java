@@ -47,4 +47,12 @@ public class ApiError {
         result = 31 * result + (errorDescription != null ? errorDescription.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "ApiError{" +
+                "errorCode='" + errorCode + '\'' +
+                ", errorDescription='" + errorDescription + '\'' +
+                '}';
+    }
 }

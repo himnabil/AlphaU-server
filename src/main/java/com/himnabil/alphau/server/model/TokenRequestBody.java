@@ -53,4 +53,14 @@ public class TokenRequestBody {
     public void setPropertie (String key , String value){
         properties.put(key , value);
     }
+
+    @Override
+    public String toString() {
+        return "TokenRequestBody{" +
+                "appName='" + appName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", properties=" + properties +
+                '}';
+    }
 }
