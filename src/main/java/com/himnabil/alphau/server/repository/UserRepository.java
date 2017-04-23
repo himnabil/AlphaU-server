@@ -1,7 +1,7 @@
 package com.himnabil.alphau.server.repository;
 
 import com.google.common.collect.Sets;
-import com.himnabil.alphau.server.model.AuthRequestBody;
+import com.himnabil.alphau.server.model.AuthRequest;
 import com.himnabil.alphau.server.model.User;
 import com.himnabil.alphau.server.model.builder.UserBuilder;
 import com.mongodb.client.MongoCollection;
@@ -48,7 +48,7 @@ import static com.mongodb.client.model.Filters.*;
         return user ;
     }
 
-    public User find (AuthRequestBody authRequest ){
+    public User find (AuthRequest authRequest ){
         return find (authRequest.getAppName() , authRequest.getUserName() , authRequest.getProperties());
     }
 

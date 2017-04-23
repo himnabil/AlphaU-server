@@ -8,11 +8,11 @@ import java.util.Map;
  * @author himna
  * @since 4/23/2017.
  */
-public class UserSubscriptionResult {
+public class UserSubscriptionResponse {
 
     private User user;
 
-    public UserSubscriptionResult (User user){
+    public UserSubscriptionResponse(User user){
         this.user = user;
     }
 

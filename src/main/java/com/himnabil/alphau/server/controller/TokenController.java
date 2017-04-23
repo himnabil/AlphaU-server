@@ -1,7 +1,7 @@
 package com.himnabil.alphau.server.controller;
 
 import com.himnabil.alphau.server.ApiErrors;
-import com.himnabil.alphau.server.model.AuthRequestBody;
+import com.himnabil.alphau.server.model.AuthRequest;
 import com.himnabil.alphau.server.model.User;
 import com.himnabil.alphau.server.repository.UserRepository;
 import com.himnabil.alphau.server.service.PasswordUtils;
@@ -29,7 +29,7 @@ public class TokenController {
     }
 
     @RequestMapping(path = "/token" , method = RequestMethod.POST)
-    public ResponseEntity<?> token( @RequestBody AuthRequestBody request ) {
+    public ResponseEntity<?> token( @RequestBody AuthRequest request ) {
         log.info(" GET /token : RequestBody: {}" , request);
         User user = userRepository.find( request );
         if (user == null) {

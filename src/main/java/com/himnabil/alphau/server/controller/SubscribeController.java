@@ -1,9 +1,9 @@
 package com.himnabil.alphau.server.controller;
 
 import com.himnabil.alphau.server.ApiErrors;
-import com.himnabil.alphau.server.model.AuthRequestBody;
+import com.himnabil.alphau.server.model.AuthRequest;
 import com.himnabil.alphau.server.model.User;
-import com.himnabil.alphau.server.model.UserSubscriptionResult;
+import com.himnabil.alphau.server.model.UserSubscriptionResponse;
 import com.himnabil.alphau.server.model.builder.UserBuilder;
 import com.himnabil.alphau.server.repository.UserRepository;
 import com.himnabil.alphau.server.service.PasswordUtils;
@@ -39,7 +39,7 @@ public class SubscribeController {
     }
 
     @RequestMapping(path = "/subscribe" , method = RequestMethod.POST)
-    public ResponseEntity<?> subscribe (@RequestBody AuthRequestBody request){
+    public ResponseEntity<?> subscribe (@RequestBody AuthRequest request){
         log.info("POST /subscribe : RequestBody = {}" , request);
         User user = userRepository.find(request);
         if (user != null){
@@ -59,6 +59,6 @@ public class SubscribeController {
                         .build()
         );
 
-        return new ResponseEntity<>( new UserSubscriptionResult(user) , HttpStatus.ACCEPTED );
+        return new ResponseEntity<>( new UserSubscriptionResponse(user) , HttpStatus.ACCEPTED );
     }
 }
