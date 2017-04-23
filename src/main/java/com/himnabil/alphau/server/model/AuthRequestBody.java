@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @author himna on 2/13/2017.
  */
-public class TokenRequestBody {
+public class AuthRequestBody {
 
     private String appName ;
     private String userName ;
@@ -56,7 +56,7 @@ public class TokenRequestBody {
 
     @Override
     public String toString() {
-        return "TokenRequestBody{" +
+        return "AuthRequestBody{" +
                 "appName='" + appName + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +

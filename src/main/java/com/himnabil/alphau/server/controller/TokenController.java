@@ -1,7 +1,7 @@
 package com.himnabil.alphau.server.controller;
 
 import com.himnabil.alphau.server.ApiErrors;
-import com.himnabil.alphau.server.model.TokenRequestBody;
+import com.himnabil.alphau.server.model.AuthRequestBody;
 import com.himnabil.alphau.server.model.User;
 import com.himnabil.alphau.server.repository.UserRepository;
 import com.himnabil.alphau.server.service.PasswordUtils;
@@ -29,16 +29,16 @@ public class TokenController {
     }
 
     @RequestMapping(path = "/token" , method = RequestMethod.POST)
-    public ResponseEntity<?> token( @RequestBody TokenRequestBody request ) {
+    public ResponseEntity<?> token( @RequestBody AuthRequestBody request ) {
         log.info(" GET /token : RequestBody: {}" , request);
-        User user = userRepository.find( request.getAppName() , request.getUserName(), request.getProperties());
+        User user = userRepository.find( request );
         if (user == null) {
              log.error("{}", ApiErrors.USER_NOT_FOUND);
              return  new ResponseEntity<>(ApiErrors.USER_NOT_FOUND, HttpStatus.NOT_FOUND);
         }
         if (! passwordUtils.checkPassword(user.getHashedPassword() , request.getPassword())){
-            log.error("{}", ApiErrors.INVALIDE_PASSWORD);
-            return  new ResponseEntity<>(ApiErrors.INVALIDE_PASSWORD , HttpStatus.BAD_REQUEST);
+            log.error("{}", ApiErrors.INVALID_PASSWORD);
+            return  new ResponseEntity<>(ApiErrors.INVALID_PASSWORD , HttpStatus.BAD_REQUEST);
         }
         String token = tokenizer.tokenize(user);
         return new ResponseEntity<>( token , HttpStatus.OK);

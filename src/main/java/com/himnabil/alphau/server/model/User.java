@@ -10,6 +10,20 @@ public class User  {
     private String appName ;
     private Map<String, Object> properties = new HashMap<String, Object>();
 
+    public User(
+            String id,
+            String userName,
+            String hashedPassword,
+            String appName,
+            Map<String, Object> properties
+    ) {
+        this.id = id;
+        this.userName = userName;
+        this.hashedPassword = hashedPassword;
+        this.appName = appName;
+        this.properties = properties;
+    }
+
     public String getId() {
         return id;
     }

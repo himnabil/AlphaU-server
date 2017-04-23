@@ -1,7 +1,9 @@
 package com.himnabil.alphau.server.repository;
 
 import com.google.common.collect.Sets;
+import com.himnabil.alphau.server.model.AuthRequestBody;
 import com.himnabil.alphau.server.model.User;
+import com.himnabil.alphau.server.model.builder.UserBuilder;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -17,8 +19,8 @@ import java.util.stream.Collectors;
 import static com.mongodb.client.model.Filters.*;
 
 /**
- * Created by himna on 2/12/2017.
- */
+  * Created by himna on 2/12/2017.
+  */
 @Repository public class UserRepository {
     private static final String COLLECTION_NAME = "user";
     private static final String USER_NAME = "user_name";
@@ -38,11 +40,16 @@ import static com.mongodb.client.model.Filters.*;
         Document userDocument = new Document()
                 .append(USER_NAME, user.getUserName())
                 .append(PASS_HASH, user.getHashedPassword())
-                .append(APP_NAME, user.getAppName())
-                ;
+                .append(APP_NAME, user.getAppName());
+        userDocument.putAll(user.getProperties());
+
         collection.insertOne(userDocument);
         user.setId( userDocument.getObjectId(ID).toHexString());
         return user ;
+    }
+
+    public User find (AuthRequestBody authRequest ){
+        return find (authRequest.getAppName() , authRequest.getUserName() , authRequest.getProperties());
     }
 
     public User find ( String appName , String userName, Map<String,String> properties ){
@@ -63,19 +70,18 @@ import static com.mongodb.client.model.Filters.*;
         if (userDocument == null){
             return null;
         }
-        User user = new User();
-        user.setId(userDocument.getObjectId(ID).toHexString());
-        user.setUserName(userDocument.getString(USER_NAME));
-        user.setHashedPassword(userDocument.getString(PASS_HASH));
-        user.setAppName(userDocument.getString(APP_NAME));
-
-        user.setProperties (
-                userDocument.keySet()
-                        .stream()
-                        .filter(property -> ! staticProperties.contains(property))
-                        .collect(Collectors.toMap(Function.identity(),userDocument::get))
-        );
-        return user;
+        return new UserBuilder()
+                .setId(userDocument.getObjectId(ID).toHexString())
+                .setUserName(userDocument.getString(USER_NAME))
+                .setHashedPassword(userDocument.getString(PASS_HASH))
+                .setAppName(userDocument.getString(APP_NAME))
+                .setProperties (
+                        userDocument.keySet()
+                                .stream()
+                                .filter(property -> ! staticProperties.contains(property))
+                                .collect(Collectors.toMap(Function.identity(),userDocument::get))
+                )
+                .build();
     }
 }
 
