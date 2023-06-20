@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 	<name>alphau-server</name>
 
-	<description></description>
+	<description/>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -68,7 +68,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>19.0</version>
+			<version>32.0.0-android</version>
 		</dependency>
 	</dependencies>
 
